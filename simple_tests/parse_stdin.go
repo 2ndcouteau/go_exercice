@@ -15,8 +15,8 @@ import (
 		//     flag.StringVar(&svar, "svar", "bar", "a string var")
 
 
-func print(str *string) bool {
-	fmt.Print(*str + "\n")
+func print(str *string) bool{
+	fmt.Println(*str)
 	return false
 }
 
@@ -26,22 +26,24 @@ func main() {
 	args := os.Args[1:]
 	len := len(args)
 
-	fmt.Print("len args[] = ", len, "\n")
+	fmt.Println("len args[] = ", len)
 	for i := 0 ; i < len ; i++ {
-//		len([]rune(args[i]))
-//		fmt.Print("len ", args[i], "= ", len)
+//		len = len([]rune((*args)[i]))
+//		fmt.Println("len ", args[i], "= ", len)
+		fmt.Println("arg[", i ,"] = ", args[i])
 	}
 	if args[0] == "quit" {
-		fmt.Print("byebye\n")
-		return
+		fmt.Println("byebye")
+		os.Exit(24)
 	}
 	ret := print(&str)
 	if ret {
-		fmt.Print("ret == true\n")
+		fmt.Println("ret == true")
 	} else {
-		fmt.Print("ret == false\n")
+		fmt.Println("ret == false")
 	}
 		// if text != "quit" {
 		// 	fmt.Println("Your text was: ", text)
 		//}
+	os.Exit(42)
 }
