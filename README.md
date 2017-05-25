@@ -8,5 +8,11 @@ You can compile with
 
 And then test with
 ```
+./exec_sonda one_test_map.map
+```
+
+or
+
+```
 ./test_all_map.sh
 ```
