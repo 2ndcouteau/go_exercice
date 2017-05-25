@@ -1,0 +1,82 @@
+################################################################################
+#                                                                              #
+#                         To_do sonda exercice in go                           #
+#                                                                              #
+################################################################################
+
+########################
+#        ROAD MAP      #
+########################
+1) Parsing
+	1.0) read file
+	1.1) check elements
+	1.2) save elements
+
+2) Resolution
+	2.0) set the map and the ship
+	2.1) Browse the road
+	2.2) Print the result
+
+3) Loop or exit
+OK)	if read file is not ended
+		continue
+	else
+		exit
+		--> if at least one of road failed
+				return an error value (1);
+			else
+				return success (0);
+
+################################################################################
+################################################################################
+
+########################
+#      IN PROGRESS     #
+########################
+
+1.1) check elements
+
+########################
+#          TODO        #
+########################
+
+1) Parsing
+	1.2) save elements
+
+2) Resolution
+	2.0) set the map and the ship
+	2.1) Browse the road
+	2.2) Print the result
+
+3) Loop or exit
+OK)	if read file is not ended
+		continue
+	else
+		exit
+		--> if at least one of road failed
+				return an error value (1);
+			else
+				return success (0);
+
+
+GNL : 	Try to return pointer == manual allocation ??
+
+BONUS :
+
+manual input
+multiple file input
+file output
+options management
+manage comment in map # (cf lem_in)
+manage special line in map ## (cf lem_in)
+
+########################
+#          DONE        #
+########################
+
+1.0) read file
+3) Loop or exit
+
+
+
+.
