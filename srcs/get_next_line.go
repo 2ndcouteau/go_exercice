@@ -6,7 +6,7 @@
 /*   By: qrosa <qrosa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 20:34:05 by qrosa             #+#    #+#             */
-/*   Updated: 2017/05/26 00:31:19 by qrosa            ###   ########.fr       */
+/*   Updated: 2017/05/26 13:52:20 by qrosa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ func	get_next_line(r *bufio.Reader) (string, error) {
 
 	for isPrefix && err == nil {
 		buf_line, isPrefix, err = r.ReadLine()
-		line = append(line, buf_line...)		// Concat lines
+		line = append(line, buf_line...)
 	}
 	return string(line), err
 }
