@@ -53,6 +53,8 @@ file output
 options management
 manage comment in map # (cf lem_in)
 manage special line in map ## (cf lem_in)
+manage collision of ship // cf hashtable ?
+
 
 ########################
 #          DONE        #
