@@ -6,7 +6,7 @@
 /*   By: qrosa <qrosa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 18:33:27 by qrosa             #+#    #+#             */
-/*   Updated: 2017/05/26 17:00:41 by qrosa            ###   ########.fr       */
+/*   Updated: 2017/05/26 19:07:49 by qrosa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,44 @@ func	turn_right(s_course *S_course) {
 	}
 }
 
+func	value_exist(value int, coor []int) bool {
+    for _, check_value := range coor {
+        if check_value == value {
+            return true
+        }
+    }
+    return false
+}
+
+func	check_save_ship(s_course *S_course) bool {
+	var is_present bool
+
+	_, is_present = (*s_course).save_pos[(*s_course).x_ship]
+	if	is_present == true {
+		is_present = value_exist((*s_course).y_ship, (*s_course).save_pos[(*s_course).x_ship])
+		if is_present == true {
+			return false
+		}
+	}
+	return true
+}
+
 func	move_one(s_course *S_course) {
 	switch (*s_course).dir {
 		case "N", "n":
-			if ((*s_course).y_ship + 1) <= (*s_course).y_max {
+			if ((*s_course).y_ship + 1) <= (*s_course).y_max && check_save_ship(s_course) {
 				(*s_course).y_ship++
 			} else { (*s_course).err++ }
 		case "W", "w":
-			if ((*s_course).x_ship - 1) >= 0 {
+			if ((*s_course).x_ship - 1) >= 0 && check_save_ship(s_course){
 				(*s_course).x_ship--
 			} else { (*s_course).err++ }
 		case "S", "s":
-			if ((*s_course).y_ship - 1) >= 0 {
+			if ((*s_course).y_ship - 1) >= 0 && check_save_ship(s_course){
 				(*s_course).y_ship--
 			} else { (*s_course).err++ }
 		case "E", "e":
-			if ((*s_course).x_ship + 1) <= (*s_course).x_max {
+			if ((*s_course).x_ship + 1) <= (*s_course).x_max && check_save_ship(s_course){
 				(*s_course).x_ship++
 			} else { (*s_course).err++ }
 	}
@@ -77,9 +99,11 @@ func	resolve_course(s_course *S_course) {
 		}
 
 		if (*s_course).err != 0 {
-			print_error("error: Sonda tries to go out of bound. The course is stopped.", s_course)
+			save_valid_probe(s_course)
+			print_error("error: Collision detection activate, the probe is shut down.", s_course)
 			return
 		}
 	}
-	fmt.Println("SONDA", (*s_course).nb_map, ":", (*s_course).x_ship, (*s_course).y_ship, (*s_course).dir)
+	save_valid_probe(s_course)
+	fmt.Println("PROBE", (*s_course).nb_map, ":", (*s_course).x_ship, (*s_course).y_ship, (*s_course).dir)
 }

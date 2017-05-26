@@ -6,7 +6,7 @@
 /*   By: qrosa <qrosa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 18:40:10 by qrosa             #+#    #+#             */
-/*   Updated: 2017/05/26 17:44:46 by qrosa            ###   ########.fr       */
+/*   Updated: 2017/05/26 19:06:42 by qrosa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,16 @@ import (
 )
 
 type S_course struct {
-	nb_map	uint
-	nb_err	uint
-	err		uint
-	x_max	int
-	y_max	int
-	x_ship	int
-	y_ship	int
-	dir		string
-	road	string
+	nb_map		uint
+	nb_err		uint
+	err			uint
+	x_max		int
+	y_max		int
+	x_ship		int
+	y_ship		int
+	dir			string
+	road		string
+	save_pos	map[int][]int
 }
 
 func	check_len(args *[]string) {
@@ -57,6 +58,7 @@ func	main_loop_process(rd *bufio.Reader) *S_course{
 	var s_course	S_course
 	var err			error
 
+	s_course.save_pos = make(map[int][]int)
 	for i := 0; err == nil ; i++ {
 		if new_line, err = get_next_line(rd); err == io.EOF { break }
 		switch i {

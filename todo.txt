@@ -34,10 +34,7 @@ OK)	if read file is not ended
 #      IN PROGRESS     #
 ########################
 
-manage collision of ship // cf hashtable ?
-1)	before each move, check is there is a sonda on the next position
-	if true --> stop the sonda, then return error
-2) save each sonda after course
+Try to know if you can use map in map to avoid browse of slice line
 
 ########################
 #          TODO        #
@@ -86,4 +83,8 @@ Manage exit code error properly
 Print nb course success/total
 
 CLEAN code OK
-.
+
+manage collision of ship --> map and slice
+1)	before each move, check is there is a sonda on the next position
+	if true --> stop the sonda, then return error
+2) save each sonda after course

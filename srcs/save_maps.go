@@ -6,7 +6,7 @@
 /*   By: qrosa <qrosa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 01:22:14 by qrosa             #+#    #+#             */
-/*   Updated: 2017/05/26 17:36:20 by qrosa            ###   ########.fr       */
+/*   Updated: 2017/05/26 19:07:39 by qrosa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ import (
 	"strconv"
 	"regexp"
 )
+
+func	save_valid_probe(s_course *S_course) {
+	(*s_course).save_pos[(*s_course).x_ship] = append((*s_course).save_pos[(*s_course).x_ship], (*s_course).y_ship)
+}
 
 func	save_map_coordinate(s_course *S_course, line *string) {
 	var err			error
