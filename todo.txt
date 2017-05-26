@@ -34,17 +34,16 @@ OK)	if read file is not ended
 #      IN PROGRESS     #
 ########################
 
-
-
-Manage exit code error properly
+manage collision of ship // cf hashtable ?
+1)	before each move, check is there is a sonda on the next position
+	if true --> stop the sonda, then return error
+2) save each sonda after course
 
 ########################
 #          TODO        #
 ########################
 
-GNL : 	Try to return pointer == manual allocation ??
-
-Print nb course success/total
+// GNL : 	Try to return pointer == manual allocation ??
 
 Allow empty line (white line) && comment line #
 
@@ -56,8 +55,6 @@ file output
 options management
 manage comment in map # (cf lem_in)
 manage special line in map ## (cf lem_in)
-manage collision of ship // cf hashtable ?
-
 
 ########################
 #          DONE        #
@@ -85,6 +82,8 @@ OK)	if read file is not ended
 
 Manage error ship one by one
 Manage lowercase declaration in map "MLRmlr" && "NSEWnsew"
+Manage exit code error properly
+Print nb course success/total
 
-
+CLEAN code OK
 .

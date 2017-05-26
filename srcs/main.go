@@ -6,7 +6,7 @@
 /*   By: qrosa <qrosa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 18:40:10 by qrosa             #+#    #+#             */
-/*   Updated: 2017/05/26 15:30:19 by qrosa            ###   ########.fr       */
+/*   Updated: 2017/05/26 17:44:46 by qrosa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ type S_course struct {
 	x_ship	int
 	y_ship	int
 	dir		string
-	road	string // change to *string ??
+	road	string
 }
 
 func	check_len(args *[]string) {
@@ -37,33 +37,31 @@ func	check_len(args *[]string) {
 		exit_bad_len(len)
 	}
 }
-func main() {
-	args := os.Args[1:]
-	check_len(&args)
 
-	// MAYBE simplified OPEN/CLOSE part
-	// open input file check for its returned error
-	file, err := os.Open(args[0])
+func	open_file(file_name string) *os.File {
+	file, err := os.Open(file_name)
 	if err != nil {
-		exit_error("ERROR: Open failed.") //       or panic(err) ??
+		exit_error("ERROR: Open failed.")
 	}
-	// delay close file on exit and check for its returned error
-	defer func() {
-		if err = file.Close(); err != nil {
-			panic(err)  // exit_error("ERROR: Close failed.")
-		}
-	}()
+	return file
+}
 
-	rd := bufio.NewReader(file)
-	var new_line string
-	var s_course S_course
+func	close_file(file *os.File) {
+	if err := file.Close(); err != nil {
+		exit_error("ERROR: Close failed.")
+	}
+}
+
+func	main_loop_process(rd *bufio.Reader) *S_course{
+	var new_line	string
+	var s_course	S_course
+	var err			error
 
 	for i := 0; err == nil ; i++ {
-//		fmt.Println(new_line)		// DEBUG
 		if new_line, err = get_next_line(rd); err == io.EOF { break }
 		switch i {
 			case 0:
-				s_course = save_map_coordinate(&new_line)
+				save_map_coordinate(&s_course, &new_line)
 			case 1:
 				s_course.nb_map++
 				save_ship_position(&s_course, &new_line)
@@ -73,7 +71,18 @@ func main() {
 				i = 0
 		}
 	}
-	ret := 0;
-	if s_course.nb_err != 0 { ret = 1 }
-	os.Exit(ret)
+	return &s_course
+}
+
+func	main() {
+	args := os.Args[1:]
+	check_len(&args)
+
+	open_file := open_file(args[0])
+	rd := bufio.NewReader(open_file)
+
+	s_course := main_loop_process(rd)
+
+	close_file(open_file)
+	exit_program(s_course)
 }

@@ -6,7 +6,7 @@
 /*   By: qrosa <qrosa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 01:22:14 by qrosa             #+#    #+#             */
-/*   Updated: 2017/05/26 15:34:17 by qrosa            ###   ########.fr       */
+/*   Updated: 2017/05/26 17:36:20 by qrosa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,10 @@ import (
 	"regexp"
 )
 
-func	save_map_coordinate(line *string) S_course {
-	var	s_course	S_course
+func	save_map_coordinate(s_course *S_course, line *string) {
 	var err			error
 
-	// fmt.Println("Save coordinate") // DEBUG
-	elems := strings.Split(*line, " ") // CHECK return ??
+	elems := strings.Split(*line, " ")
 	if len(elems) != 2 {
 		exit_error("ERROR: Map line coordinate is not compliant.")
 	}
@@ -37,13 +35,12 @@ func	save_map_coordinate(line *string) S_course {
 	} else if s_course.y_max < 0 {
 		exit_error("ERROR: Y map value can not be negative.")
 	}
-	return s_course
+	return
 }
 
 func	save_ship_position(s_course *S_course, line *string) {
 	var err			error
 
-	// fmt.Println("Save ship positions") // DEBUG
 	elems := strings.Split(*line, " ")
 	(*s_course).err = 0
 	if len(elems) != 3 {
@@ -72,7 +69,6 @@ func	save_ship_position(s_course *S_course, line *string) {
 }
 
 func	save_road_line(s_course *S_course, line *string) {
-	// fmt.Println("Save road") // DEBUG
 	if (*s_course).err != 0 { return }
 	(*s_course).road = strings.TrimSpace(*line)
 	if match, _ := regexp.MatchString("[^LRMrlm]+", (*s_course).road); match == true {

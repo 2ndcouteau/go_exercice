@@ -6,7 +6,7 @@
 /*   By: qrosa <qrosa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 20:34:05 by qrosa             #+#    #+#             */
-/*   Updated: 2017/05/26 13:52:20 by qrosa            ###   ########.fr       */
+/*   Updated: 2017/05/26 17:46:16 by qrosa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ import "bufio"
 	buffered reader.
 	An error is returned if there is an error with the buffered reader.
 	This function is usefull for bypass Scanner method len limitation ~65k char
-
-	Try to return pointer == manual allocation ??
 */
 func	get_next_line(r *bufio.Reader) (string, error) {
 	var (
