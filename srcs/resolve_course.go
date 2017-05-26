@@ -6,7 +6,7 @@
 /*   By: qrosa <qrosa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 18:33:27 by qrosa             #+#    #+#             */
-/*   Updated: 2017/05/26 02:01:44 by qrosa            ###   ########.fr       */
+/*   Updated: 2017/05/26 15:29:44 by qrosa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ import (
 )
 
 func	resolve_course(s_course *S_course) {
-	if (*s_course).ret != 0 { return }
+	if (*s_course).err != 0 { return }
 	fmt.Println("COURSE", (*s_course).nb_map, ":", s_course) // DEBUG
 }
 

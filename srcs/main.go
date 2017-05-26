@@ -6,7 +6,7 @@
 /*   By: qrosa <qrosa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 18:40:10 by qrosa             #+#    #+#             */
-/*   Updated: 2017/05/26 02:13:35 by qrosa            ###   ########.fr       */
+/*   Updated: 2017/05/26 15:30:19 by qrosa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ import (
 )
 
 type S_course struct {
-	nb_map	int
-	ret		int
+	nb_map	uint
+	nb_err	uint
+	err		uint
 	x_max	int
 	y_max	int
 	x_ship	int
@@ -72,5 +73,7 @@ func main() {
 				i = 0
 		}
 	}
-	os.Exit(s_course.ret)
+	ret := 0;
+	if s_course.nb_err != 0 { ret = 1 }
+	os.Exit(ret)
 }

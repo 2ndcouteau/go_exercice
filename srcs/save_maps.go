@@ -6,7 +6,7 @@
 /*   By: qrosa <qrosa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 01:22:14 by qrosa             #+#    #+#             */
-/*   Updated: 2017/05/26 02:09:08 by qrosa            ###   ########.fr       */
+/*   Updated: 2017/05/26 15:34:17 by qrosa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ func	save_ship_position(s_course *S_course, line *string) {
 
 	// fmt.Println("Save ship positions") // DEBUG
 	elems := strings.Split(*line, " ")
+	(*s_course).err = 0
 	if len(elems) != 3 {
 		print_error("error: Ship position line is not compliant.", s_course)
 		return
@@ -72,6 +73,7 @@ func	save_ship_position(s_course *S_course, line *string) {
 
 func	save_road_line(s_course *S_course, line *string) {
 	// fmt.Println("Save road") // DEBUG
+	if (*s_course).err != 0 { return }
 	(*s_course).road = strings.TrimSpace(*line)
 	if match, _ := regexp.MatchString("[^LRMrlm]+", (*s_course).road); match == true {
 		print_error("error: The road is not valid", s_course)

@@ -45,6 +45,10 @@ OK)	if read file is not ended
 
 GNL : 	Try to return pointer == manual allocation ??
 
+Print nb course success/total
+
+Allow empty line (white line) && comment line #
+
 BONUS :
 
 manual input
