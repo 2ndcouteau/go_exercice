@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_function.go                                   :+:      :+:    :+:   */
+/*   exit_error_functions.go                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qrosa <qrosa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 20:45:22 by qrosa             #+#    #+#             */
-/*   Updated: 2017/05/25 20:46:03 by qrosa            ###   ########.fr       */
+/*   Updated: 2017/05/26 02:08:45 by qrosa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ import (
 	"fmt"
 	"os"
 )
+
+func	print_error(str string, s_course *S_course) {
+	(*s_course).ret = 1
+	fmt.Fprintln(os.Stderr, "COURSE", (*s_course).nb_map, ":", str)
+}
 
 func	exit_error(str string) {
 	fmt.Fprintln(os.Stderr, str)
