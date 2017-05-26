@@ -34,10 +34,9 @@ OK)	if read file is not ended
 #      IN PROGRESS     #
 ########################
 
-2) Resolution
-	2.0) set the map and the ship
-	2.1) Browse the road
-	2.2) Print the result
+
+
+Manage exit code error properly
 
 ########################
 #          TODO        #
@@ -69,6 +68,10 @@ manage collision of ship // cf hashtable ?
 1.1) check elements
 1.2) save elements
 
+2) Resolution
+	2.0) set the map and the ship
+	2.1) Browse the road
+	2.2) Print the result
 
 3) Loop or exit
 OK)	if read file is not ended

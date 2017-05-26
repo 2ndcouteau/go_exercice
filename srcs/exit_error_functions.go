@@ -6,7 +6,7 @@
 /*   By: qrosa <qrosa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 20:45:22 by qrosa             #+#    #+#             */
-/*   Updated: 2017/05/26 15:33:06 by qrosa            ###   ########.fr       */
+/*   Updated: 2017/05/26 16:46:46 by qrosa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ import (
 func	print_error(str string, s_course *S_course) {
 	(*s_course).err = 1 // += 1 for count nb course failed
 	(*s_course).nb_err++
-	fmt.Fprintln(os.Stderr, "COURSE", (*s_course).nb_map, ":", str)
+	fmt.Fprintln(os.Stderr, "SONDA", (*s_course).nb_map, ":", str)
 }
 
 func	exit_error(str string) {
