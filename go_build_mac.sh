@@ -8,5 +8,10 @@ go build -o "exec_sonda"	srcs/main.go \
 							srcs/resolve_course.go \
 							srcs/exit_error_functions.go
 
+save_return=$?
 
-[ `echo $?` == 0 ] && echo "Compilation ${CYAN}SUCCESS${RESET}\nUsage: ./exec_sonda FILE" || echo "Compilation ${RED}FAIL${RESET}"
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+	[ $save_return == 0 ] && echo -e "Compilation ${CYAN}SUCCESS${RESET}\\nUsage: ./exec_sonda FILE" || echo -e "Compilation ${RED}FAIL${RESET}"
+else
+	[ $save_return == 0 ] && echo "Compilation ${CYAN}SUCCESS${RESET}\nUsage: ./exec_sonda FILE" || echo "Compilation ${RED}FAIL${RESET}"
+fi
